@@ -1,0 +1,24 @@
+
+
+#!/bin/bash
+#Simple script used for pulling and displaying computer information
+
+echo "~~USER INFO~~"
+whoami
+echo @
+hostname
+echo 
+echo "~~CPU INFO~~"
+lscpu | grep "Model name"
+lscpu | grep "CPU MHz"
+echo
+echo "~~MEMORY~~"
+free -h
+echo 
+echo 
+sudo lsblk -f -o name,fstype,size| grep ext4
+sudo lsblk -f -o name,fstype,size| grep xfs
+echo
+echo "~~NETWORK INFORMATION~~"
+sudo ifconfig |grep -v "broadcast" | grep -v "inet6" |grep inet 
+
